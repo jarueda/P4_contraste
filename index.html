@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jairo A. Rueda-Restrepo">
+<meta name="dcterms.date" content="2025-07-10">
+
+<title>Contraste de Hipótesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./intro.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Contraste de Hipótesis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introducción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contrastes de Hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sigma-conocida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza conocida</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sigma-desconocida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza desconocida</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Acerca-de-sigma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contraste de Hipótesis acerca de la Varianza en poblaciones normales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Cociente-de-vars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de Hipótesis acerca del Cociente de Varianzas en porblaciones normales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-o.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hipótesis sobre la diferencia de medias en Poblaciones normales y varianzas conocidas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-homoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hipótesis sobre la diferencia de medias en poblaciones normales y varianzas desconocidas pero supuestamente homogéneas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-heteroc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Contraste de hipótesis sobre la diferencia de medias en poblaciones normales y varianzas desconocidas pero supuestamente heterogéneas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Power1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Potencia del contraste</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <ul class="collapse">
+  <li><a href="#comparación-entre-estadísticos-observados-y-teóricos" id="toc-comparación-entre-estadísticos-observados-y-teóricos" class="nav-link" data-scroll-target="#comparación-entre-estadísticos-observados-y-teóricos">Comparación entre estadísticos observados y teóricos:</a></li>
+  <li><a href="#comparación-de-métodos" id="toc-comparación-de-métodos" class="nav-link" data-scroll-target="#comparación-de-métodos">Comparación de métodos</a></li>
+  <li><a href="#tamaño-de-muestra-e-incertidumbre-sobre-la-varianza" id="toc-tamaño-de-muestra-e-incertidumbre-sobre-la-varianza" class="nav-link" data-scroll-target="#tamaño-de-muestra-e-incertidumbre-sobre-la-varianza">Tamaño de muestra e incertidumbre sobre la varianza</a></li>
+  <li><a href="#contraste-sobre-diferencias-de-medias" id="toc-contraste-sobre-diferencias-de-medias" class="nav-link" data-scroll-target="#contraste-sobre-diferencias-de-medias">Contraste sobre diferencias de medias</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Contraste de Hipótesis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jairo A. Rueda-Restrepo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción" class="level1 unnumbered">
+<h1 class="unnumbered">Introducción</h1>
+<p>En esta serie de ejemplos se describe, de manera resumida, dos tipos de contrastes de hipótesis frecuente en Agronomía. La presentación está separada en dos tipos de preguntas: la primera sobre contrastes acerca de la media y la segunda sobre diferencias de medias. En todos los casos se supone que las variables aleatorias tienen distribución normal o aproximadamente normal.</p>
+<p>La técnica de contraste de hipótesis, también conocida como prueba de hipótesis, es un procedimiento estadístico utilizado para tomar decisiones basadas en evidencia empírica en el contexto de la investigación científica. Esta técnica se utiliza para determinar si hay evidencia suficiente en los datos observados para apoyar o rechazar una afirmación o hipótesis sobre una población. Aquí hay una explicación detallada y una comparación de dos métodos comunes utilizados en el contraste de hipótesis: el valor p y la comparación entre estadísticos observados y teóricos.</p>
+<p>En primer término se debe establecer que el método asigna valor de verdad a un par de afirmaciónes que son opuestas y complementarias.</p>
+<p>Estas dos afirmaciones se consignan en el denominado juego de hipótesis estadística.</p>
+<p><span class="math inline">\(H_0\)</span>: <strong>Hipótesis Nula</strong>, Declara la nulidad de los efectos y será mantenida como “cierta”, a menos que la evidencia muestral diga lo contrario. En general, en ella se establecerá la condición “menos mala” de los resultados. Siempre en ella se considera la hipótesis de igualdad. El estudiante debe diferenciar que el hecho de no contar con evedencia que contradiga la hipótesis nula, esto no implica que sea cierta la <span class="math inline">\(H_0\)</span>.</p>
+<p>La <span class="math inline">\(H_0\)</span> presenta las formas:</p>
+<p><span class="math display">\[H_0: \theta \le \theta_0\]</span> <span class="math display">\[H_0: \theta \ge \theta_0\]</span> <span class="math display">\[H_0: \theta = \theta_0\]</span></p>
+<p><span class="math inline">\(H_a\)</span>: <strong>Hipótesis Alterna</strong>, Contradice la hipótesis nula y, en general, en ella se establece o se propone la hipótesis que quien investiga quiere “probar”.</p>
+<p>Las formas que, respectivamente contradicen las <span class="math inline">\(H_0\)</span> respectivas anteriores tienen la forma:</p>
+<p><span class="math display">\[H_0: \theta \gt \theta_0\]</span> <span class="math display">\[H_0: \theta \lt \theta_0\]</span> <span class="math display">\[H_0: \theta \ne \theta_0\]</span></p>
+<p>Para realizar un contraste de hipótesis, en general, se necesitan tres elementos:</p>
+<ul>
+<li><strong>Un Estadístico de prueba</strong></li>
+<li><strong>La distribución de probabilidades para este estadístico de prueba</strong></li>
+<li><strong>Una región de rechazo para la hipótesis nula</strong></li>
+</ul>
+<p>El procedimiento puede ser resumido en los siguientes pasos:</p>
+<p><strong>Definir las hipótesis:</strong> En primer lugar, se plantean dos hipótesis, la nula (<span class="math inline">\(H_0\)</span>) y la alternativa (<span class="math inline">\(H_a\)</span>).</p>
+<p><strong>Recopilación de datos:</strong> Se recolectan datos relevantes a la pregunta en estudio.</p>
+<p><strong>Cálculo del estadístico de prueba:</strong> Se calcula un estadístico de prueba basado en los datos observados y la distribución muestral bajo la hipótesis nula.</p>
+<p><strong>Cálculo del valor p:</strong> El valor p representa la probabilidad de obtener resultados al menos tan extremos como los observados, asumiendo que la hipótesis nula es cierta. Cuanto menor sea el valor p, mayor será la evidencia en contra de la hipótesis nula.</p>
+<p><strong>Toma de decisión:</strong> Si el valor p es menor que un nivel de significancia predefinido (por ejemplo, α = 0.05), se rechaza la hipótesis nula en favor de la hipótesis alternativa. Si el valor p es mayor que α, se falla en rechazar la hipótesis nula.</p>
+<section id="comparación-entre-estadísticos-observados-y-teóricos" class="level2">
+<h2 class="anchored" data-anchor-id="comparación-entre-estadísticos-observados-y-teóricos">Comparación entre estadísticos observados y teóricos:</h2>
+<p>Este enfoque implica comparar el valor del estadístico calculado a partir de los datos observados con un valor crítico teórico o una distribución de referencia. El procedimiento es el siguiente:</p>
+<p><strong>Definir las hipótesis:</strong> Igual que en el método de valor p, se establecen una hipótesis nula (H0) y una hipótesis alternativa (Ha).</p>
+<p><strong>Recopilación de datos:</strong> Se recopilan los datos relevantes.</p>
+<p><strong>Cálculo del estadístico de prueba:</strong> Se calcula un estadístico de prueba basado en los datos observados.</p>
+<p><strong>Comparación con estadístico crítico:</strong> Se compara el valor del estadístico de prueba con un valor crítico teórico obtenido a partir de una distribución conocida (por ejemplo, la distribución normal o t de Student). Si el estadístico de prueba es mayor o menor que el valor crítico, se toma una decisión en contra de la hipótesis nula.</p>
+</section>
+<section id="comparación-de-métodos" class="level2">
+<h2 class="anchored" data-anchor-id="comparación-de-métodos">Comparación de métodos</h2>
+<p>Ambos métodos tienen sus ventajas y limitaciones:</p>
+<ul>
+<li><p><strong>Valor p:</strong> El valor p proporciona una medida continua de la evidencia en contra de la hipótesis nula y es fácil de interpretar. Sin embargo, puede ser sensible al tamaño de la muestra y al nivel de significancia elegido, y no proporciona información sobre la magnitud del efecto.</p></li>
+<li><p><strong>Comparación entre estadísticos observados y teóricos:</strong> Este método puede ser más robusto en algunos casos y no depende de la elección de un nivel de significancia. Sin embargo, la interpretación puede ser más complicada y no proporciona una medida cuantitativa de la evidencia en contra de la hipótesis nula. Este método, al contrario del uso del valor P, no valora la contundencia del rechazo o no rechazo de la hipótesis nula.</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Supongamos que queremos “probar” si la media de las calificaciones en un examen es mayor que 70. Tenemos una muestra de 30 estudiantes y calculamos la media muestral y la desviación estándar de las calificaciones. A continuación, podemos realizar el contraste de hipótesis utilizando ambos métodos:</p>
+<ul>
+<li><p><strong>Valor p:</strong> Calculamos un valor p basado en la media muestral, la desviación estándar y la hipótesis nula de que la media es igual a 70. Si el valor p es menor que, por ejemplo, 0.05, rechazamos la hipótesis nula.</p></li>
+<li><p><strong>Comparación entre estadísticos observados y teóricos:</strong> Calculamos un estadístico de prueba (por ejemplo, el valor Z o el valor t) y lo comparamos con el valor crítico de la distribución normal o t correspondiente. Si el estadístico de prueba supera el valor crítico, rechazamos la hipótesis nula.</p></li>
+</ul>
+<p>Ambos métodos nos permiten tomar una decisión sobre si la media de las calificaciones es significativamente mayor que 70, pero el enfoque de valor p proporciona una medida más directa de la evidencia en contra de la hipótesis nula, mientras que el enfoque de comparación entre estadísticos observados y teóricos es más basado en umbral. La elección del método depende de las preferencias del investigador y la naturaleza de los datos.</p>
+</section>
+<section id="tamaño-de-muestra-e-incertidumbre-sobre-la-varianza" class="level2">
+<h2 class="anchored" data-anchor-id="tamaño-de-muestra-e-incertidumbre-sobre-la-varianza">Tamaño de muestra e incertidumbre sobre la varianza</h2>
+<p>Para el caso de constrastes de hipótesis sobre la media, se muestra el caso más ideal en el que se tiene suficiente información para creer que conocemos el valor de la varianza; en este caso la decisión se basa en la distribución de probabilidades normal estandar. Cuando no se puede tener tal grado de certeza el problema se trata a la luz de la distribución T-student.</p>
+</section>
+<section id="contraste-sobre-diferencias-de-medias" class="level2">
+<h2 class="anchored" data-anchor-id="contraste-sobre-diferencias-de-medias">Contraste sobre diferencias de medias</h2>
+<p>Cuando se trata de la comparación de dos medias (note que cuando se trata de la comparación entre más de dos medias el procedimiento descrito es poco recomendado pues la tasa de error tipo I se subestima. Resulta más indicado el Análisis de Varianza), además de la consideración sobre el conocimiento de la varianza incluye la pregunta sobre la existencia o no de <strong>HOMOCEDASTICIDAD</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./intro.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contrastes de Hipótesis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

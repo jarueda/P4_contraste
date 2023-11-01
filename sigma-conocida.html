@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Contraste de Hipótesis - 2&nbsp; Hipótesis sobre la media en Poblaciones normales y varianza conocida</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./sigma-desconocida.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sigma-conocida.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza conocida</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Contraste de Hipótesis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contrastes de Hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sigma-conocida.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza conocida</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sigma-desconocida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza desconocida</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Acerca-de-sigma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contraste de Hipótesis acerca de la Varianza en poblaciones normales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Cociente-de-vars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de Hipótesis acerca del Cociente de Varianzas en porblaciones normales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-o.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hipótesis sobre la diferencia de medias en Poblaciones normales y varianzas conocidas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-homoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hipótesis sobre la diferencia de medias en poblaciones normales y varianzas desconocidas pero supuestamente homogéneas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dif-de-medias-heteroc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Contraste de hipótesis sobre la diferencia de medias en poblaciones normales y varianzas desconocidas pero supuestamente heterogéneas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Power1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Potencia del contraste</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#nivel-de-significancia-admitido-nivel-de-significancia-observado" id="toc-nivel-de-significancia-admitido-nivel-de-significancia-observado" class="nav-link active" data-scroll-target="#nivel-de-significancia-admitido-nivel-de-significancia-observado"><span class="header-section-number">2.1</span> Nivel de significancia admitido, nivel de significancia observado</a>
+  <ul class="collapse">
+  <li><a href="#contraste-bilateral" id="toc-contraste-bilateral" class="nav-link" data-scroll-target="#contraste-bilateral"><span class="header-section-number">2.1.1</span> Contraste Bilateral</a></li>
+  <li><a href="#contraste-unilateral-1" id="toc-contraste-unilateral-1" class="nav-link" data-scroll-target="#contraste-unilateral-1"><span class="header-section-number">2.1.2</span> Contraste Unilateral 1</a></li>
+  <li><a href="#contraste-unilateral-2" id="toc-contraste-unilateral-2" class="nav-link" data-scroll-target="#contraste-unilateral-2"><span class="header-section-number">2.1.3</span> Contraste Unilateral 2</a></li>
+  </ul></li>
+  <li><a href="#resumen-de-valor-p" id="toc-resumen-de-valor-p" class="nav-link" data-scroll-target="#resumen-de-valor-p">Resumen de valor P</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza conocida</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Si X es una variable aleatoria que tiene una distribución de probabilidades normal, el caso más simple de contraste de hipótesis asume que se conoce la varianza poblacional, <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>El estadístico de prueba para los contrastes se basa en el promedio, media muestral, estandarizado:</p>
+<p><span class="math display">\[Z_c=\frac{\bar x-\mu}{\sqrt{\frac{\sigma^2}{n}}} \sim \eta (0;1)\]</span></p>
+<section id="nivel-de-significancia-admitido-nivel-de-significancia-observado" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="nivel-de-significancia-admitido-nivel-de-significancia-observado"><span class="header-section-number">2.1</span> Nivel de significancia admitido, nivel de significancia observado</h2>
+<p>Al valor de significancia observado se le conoce como <strong>Valor P = P_value</strong> <span class="math inline">\(\hat{\alpha}\)</span> y constituye el criterio para la toma de dicisiones, al compararlo con el nivel de significancia admitido, <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>Valor P</strong>: Es el valor de la probabilidad de encontrar un estadístico de prueba tan o más extremo que el estimado de la muestra, si se está cumpliendo la hipótesis nula.</p>
+<p>En general, mientras más pequeño sea el P_value, más evidencia hay en contra de la hipótesis nula.</p>
+<section id="contraste-bilateral" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="contraste-bilateral"><span class="header-section-number">2.1.1</span> Contraste Bilateral</h3>
+<p>Si se contrata el juego de hipótesis:</p>
+<p><span class="math display">\[
+H_0: \mu= \mu_0 \]</span> <span class="math display">\[
+H_a: \mu \ne \mu_0
+\]</span></p>
+<section id="criterio-del-valor-p" class="level4" data-number="2.1.1.1">
+<h4 data-number="2.1.1.1" class="anchored" data-anchor-id="criterio-del-valor-p"><span class="header-section-number">2.1.1.1</span> Criterio del Valor P</h4>
+<p><span class="math display">\[\hat{\alpha}=2*[1-F(|Z_c|)]\]</span></p>
+</section>
+<section id="criterio-usando-percentiles" class="level4" data-number="2.1.1.2">
+<h4 data-number="2.1.1.2" class="anchored" data-anchor-id="criterio-usando-percentiles"><span class="header-section-number">2.1.1.2</span> Criterio usando percentiles</h4>
+<p>Rechace <span class="math inline">\(H_0\)</span>, con nivel de significancia <span class="math inline">\(\alpha\)</span>, si <span class="math inline">\(|Z_c|&gt;Z_{\frac{\alpha}{2}}\)</span></p>
+<p><strong>Ejemplo</strong></p>
+<p>Suponga que con base en información muestral se encontró: <span class="math inline">\(\sum_{i=1}^{32}x_i^2 =3481\)</span> y <span class="math inline">\(\sum_{i=1}^{32}x_i = 333\)</span></p>
+<p>Con base en esta información contraste la hipótesis de que la media de <span class="math inline">\(X\)</span> es igual a 10.7</p>
+<p>Solución</p>
+<p>Según la información muestral <span class="math display">\[\bar x=\frac{333}{32}=10.4063\]</span> <span class="math display">\[S^2=\frac{3481-\frac{333^2}{32}}{31}=0.5070565\]</span></p>
+<p>El juego de hipótesis a contrastar será:</p>
+<p><span class="math display">\[H_0:\mu = 10.7 \\ H_a:\mu \ne 10.7\]</span></p>
+<p>El estadístico de prueba está dado por: <span class="math inline">\(Z_c=\frac{10.40625-10.7}{\sqrt{\frac{0.50706}{32}}}=-2.333591\)</span></p>
+<p>Por tanto, el valor de la significancia observada será:</p>
+<p><span class="math display">\[\hat\alpha=P(Z&gt;|Z_c|)=2*P(Z&gt;2.333591)=0.009808574*2=0.01961715\]</span> Si se fija <span class="math inline">\(\alpha\)</span>=0.02 o más, esto lleva al no rechazo de <span class="math inline">\(H_0\)</span></p>
+<p>Si se fija <span class="math inline">\(\alpha\)</span>=0.01, esto lleva al rechazo de <span class="math inline">\(H_0\)</span></p>
+<p>El contraste rechaza <span class="math inline">\(H_0\)</span> si se fija la tasa máxima del error tipo I, <span class="math inline">\(\alpha\)</span> en valores inferiores al 1.96% (por ejemplo si <span class="math inline">\(\alpha\)</span>=0.01)</p>
+<p>Usando percentiles. Si <span class="math inline">\(\alpha\)</span>=0.01, <span class="math inline">\(Z_{\frac{\alpha}{2}}=Z_{\frac{0.01}{2}}=Z_{.005}=2.575829&gt;2.333591\)</span>. Por tanto no se rechaza <span class="math inline">\(H_0\)</span></p>
+<p>Si <span class="math inline">\(\alpha\)</span>=0.05, <span class="math inline">\(Z_{\frac{\alpha}{2}}=Z_{\frac{0.05}{2}}=Z_{.025}=1.959964&lt;2.333591\)</span>. Por tanto se rechaza <span class="math inline">\(H_0\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Zc <span class="ot">&lt;-</span> <span class="cf">function</span>(x,m,s2,<span class="at">n=</span><span class="dv">1</span>){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> (x<span class="sc">-</span>m)<span class="sc">/</span><span class="fu">sqrt</span>(s2<span class="sc">/</span>n)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">10.7</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">0.5070565</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">10.4063</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>E.p. <span class="ot">&lt;-</span> <span class="fu">Zc</span>(x,m,s2,<span class="dv">32</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Valor.P <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(E.p.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="contraste-unilateral-1" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="contraste-unilateral-1"><span class="header-section-number">2.1.2</span> Contraste Unilateral 1</h3>
+<p>Si se contrata el juego de hipótesis:</p>
+<p><span class="math display">\[
+H_0: \mu \ge \mu_0 \\
+H_a: \mu \lt \mu_0
+\]</span></p>
+<section id="criterio-del-p_value" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="criterio-del-p_value"><span class="header-section-number">2.1.2.1</span> Criterio del P_value</h4>
+<p><span class="math display">\[\hat{\alpha}=P(Z&lt;Z_c)\]</span></p>
+</section>
+<section id="criterio-usando-percentiles-1" class="level4" data-number="2.1.2.2">
+<h4 data-number="2.1.2.2" class="anchored" data-anchor-id="criterio-usando-percentiles-1"><span class="header-section-number">2.1.2.2</span> Criterio usando percentiles</h4>
+<p>Rechace <span class="math inline">\(H_0\)</span>, con nivel de significancia <span class="math inline">\(\alpha\)</span>, si <span class="math inline">\(Z_c &lt; -Z_{\alpha}\)</span></p>
+<p>Ejemplo (Walpole &amp; Myers)</p>
+<p>Duración de las baterías</p>
+<p><span class="math display">\[\begin{array}{cccccccc} \hline
+2.2 &amp;4.1 &amp;3.5 &amp;4.5 &amp;3.2 &amp;3.7 &amp;3.0 &amp;2.6 \\
+3.4 &amp;1.6 &amp;3.1 &amp;3.3 &amp;3.8 &amp;3.1 &amp;4.7 &amp;3.7 \\
+2.5 &amp;4.3 &amp;3.4 &amp;3.6 &amp;2.9 &amp;3.3 &amp;3.9 &amp;3.1 \\
+3.3 &amp;3.1 &amp;3.7 &amp;4.4 &amp;3.2 &amp;4.1 &amp;1.9 &amp;3.4 \\
+4.7 &amp;3.8 &amp;3.2 &amp;2.6 &amp;3.9 &amp;3.0 &amp;4.2 &amp;3.5 \\ \hline
+\end{array}
+\]</span></p>
+<p>Se pretende contrastar la hipótesis de que la duración media de las baterías es superior a 3.5. Estime el valor de la significancia observada, <span class="math inline">\(\hat\alpha = Valor P\)</span>, y escriba la conclusión.</p>
+<p>Solución</p>
+<p><span class="math display">\[
+H_0: \mu \le 3.5 \\
+H_a: \mu \gt 3.5
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>batery <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.2</span>, <span class="fl">4.1</span>, <span class="fl">3.5</span>, <span class="fl">4.5</span>, <span class="fl">3.2</span>, <span class="fl">3.7</span>, <span class="fl">3.0</span>, <span class="fl">2.6</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fl">3.4</span>, <span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">3.3</span>, <span class="fl">3.8</span>, <span class="fl">3.1</span>, <span class="fl">4.7</span>, <span class="fl">3.7</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fl">2.5</span>, <span class="fl">4.3</span>, <span class="fl">3.4</span>, <span class="fl">3.6</span>, <span class="fl">2.9</span>, <span class="fl">3.3</span>, <span class="fl">3.9</span>, <span class="fl">3.1</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fl">3.3</span>, <span class="fl">3.1</span>, <span class="fl">3.7</span>, <span class="fl">4.4</span>, <span class="fl">3.2</span>, <span class="fl">4.1</span>, <span class="fl">1.9</span>, <span class="fl">3.4</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fl">4.7</span>, <span class="fl">3.8</span>, <span class="fl">3.2</span>, <span class="fl">2.6</span>, <span class="fl">3.9</span>, <span class="fl">3.0</span>, <span class="fl">4.2</span>, <span class="fl">3.5</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>(m <span class="ot">&lt;-</span> <span class="fu">mean</span>(batery))            <span class="co"># media muestral</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.4125</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(s2 <span class="ot">&lt;-</span> <span class="fu">var</span>(batery))            <span class="co"># varianza muestral</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4939423</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(ee <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(batery)<span class="sc">/</span><span class="dv">40</span>))   <span class="co"># error estándar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1111241</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(batery, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">mu =</span> <span class="fl">3.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  batery
+t = -0.78741, df = 39, p-value = 0.7821
+alternative hypothesis: true mean is greater than 3.5
+95 percent confidence interval:
+ 3.22527     Inf
+sample estimates:
+mean of x 
+   3.4125 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(batery, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">mu =</span> <span class="fl">3.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  batery
+t = -0.78741, df = 39, p-value = 0.4358
+alternative hypothesis: true mean is not equal to 3.5
+95 percent confidence interval:
+ 3.18773 3.63727
+sample estimates:
+mean of x 
+   3.4125 </code></pre>
+</div>
+</div>
+<p>La información muestral no respalda la hipótesis de que la duración media de las baterías sea mayor que 3.5 (<span class="math inline">\(\hat\alpha=0.7821\)</span>)</p>
+</section>
+</section>
+<section id="contraste-unilateral-2" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="contraste-unilateral-2"><span class="header-section-number">2.1.3</span> Contraste Unilateral 2</h3>
+<p>Si se contrasta el juego de hipótesis:</p>
+<p><span class="math display">\[
+H_0: \mu \le \mu_0 \\
+H_a: \mu \gt \mu_0
+\]</span></p>
+<section id="criterio-del-valor-p-1" class="level4" data-number="2.1.3.1">
+<h4 data-number="2.1.3.1" class="anchored" data-anchor-id="criterio-del-valor-p-1"><span class="header-section-number">2.1.3.1</span> Criterio del Valor P</h4>
+<p><span class="math display">\[\hat{\alpha}=P(Z&gt;Z_c)\]</span></p>
+</section>
+<section id="criterio-usando-percentiles-2" class="level4" data-number="2.1.3.2">
+<h4 data-number="2.1.3.2" class="anchored" data-anchor-id="criterio-usando-percentiles-2"><span class="header-section-number">2.1.3.2</span> Criterio usando percentiles</h4>
+<p>Rechace <span class="math inline">\(H_0\)</span>, con nivel de significancia <span class="math inline">\(\alpha\)</span>, si <span class="math inline">\(Z_c&gt;Z_{\alpha}\)</span></p>
+</section>
+</section>
+</section>
+<section id="resumen-de-valor-p" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="resumen-de-valor-p">Resumen de valor P</h2>
+$$
+<span class="math display">\[\begin{array}{l|c}
+&amp;Hipótesis \;alterna &amp; \hat \alpha = Valor \; P \\ \hline
+&amp;H_a: \mu \gt \mu_0 &amp; P(Z \gt Z_c) \\
+&amp;&amp;&amp;\\
+&amp;H_a: \mu \lt \mu_0 &amp; P(Z \lt Z_c) \\
+&amp;&amp;&amp;\\
+&amp;H_a: \mu \ne \mu_0 &amp; 2*P(Z \gt \lvert{Z_c}\lvert)\\
+
+\hline
+\end{array}\]</span>
+<p>$$</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contrastes de Hipótesis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./sigma-desconocida.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hipótesis sobre la media en Poblaciones normales y varianza desconocida</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
